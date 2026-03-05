@@ -9,7 +9,7 @@
 
 ### Core Idea
 
-Students work in **teams (3–4 people)** to build a **complete Big Data pipeline**:
+Students work in **teams (2 - 4 people)** to build a **complete Big Data pipeline**:
 
 **Data → Storage → Processing → Machine Learning → Visualization → Presentation**
 
