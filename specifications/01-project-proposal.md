@@ -41,6 +41,7 @@ The outcome is a **project proposal** that sets the dataset, topic, and problem 
 
 - The team **must** create **one** repository in the **ADD-PJATK** organization:  
   **https://github.com/ADD-PJATK**
+- The repository **must** be **private**.
 - **Repository name** must follow this pattern, using **student index numbers** (s + 5 digits):
   - **2-person teams:** `sXXXXX_sXXXXX` (e.g. `s12345_s67890`)
   - **3-person teams:** `sXXXXX_sXXXXX_sXXXXX`
@@ -99,7 +100,7 @@ No specific README structure is imposed beyond the above; formatting is left to 
 
 | Criterion | 2-person | 3-person | 4-person |
 |-----------|----------|----------|----------|
-| Repository in ADD-PJATK, correct naming (`sXXXXX_sXXXXX` …) | 2 | 2 | 2 |
+| Repository in ADD-PJATK, **private**, correct naming (`sXXXXX_sXXXXX` …) | 2 | 2 | 2 |
 | Dataset(s) meet minimum size (tabular ≥ 10,000; other ≥ 2,000) and type diversity where required | 3 | 3 | 3 |
 | README: data source(s), type, size, verification | 2 | 2 | 2 |
 | README: project/topic area, goals (and per-dataset role for 3–4) | 3 | 2 | 1.5 |
@@ -125,7 +126,7 @@ Partial fulfilment of a criterion may result in partial points at the grader’s
 |-------------|------------|
 | One dataset; tabular ≥ 10,000 samples, other types ≥ 2,000 samples | Teams of 2 |
 | One dataset per member; preferably different types (tabular, text, images); tabular ≥ 10,000, other types ≥ 2,000 per dataset | Teams of 3 and 4 |
-| Repo in ADD-PJATK, name `sXXXXX_sXXXXX` […] | All teams |
+| Repo in ADD-PJATK, **private**, name `sXXXXX_sXXXXX` […] | All teams |
 | README: data source(s) + type + size / verification | All teams |
 | README: project/topic area and high-level goals (and per-dataset role for 3–4) | All teams |
 | GitHub Project + 12 Epics (1 per tasks 1–12) | Teams of 3 and 4 |

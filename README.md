@@ -106,6 +106,8 @@ Lab:
 Deliverable:
 Project proposal.
 
+**Detailed documentation:** [Task 01 — Project Proposal (business specification)](specifications/01-project-proposal.md)
+
 ---
 
 # Week 2 – Data Acquisition
@@ -134,6 +136,8 @@ Tools:
 Deliverable:
 Initial dataset.
 
+**Detailed documentation:** [Task 02 — Data Acquisition and Initial Quality Evaluation (business specification)](specifications/02-data-acquisition.md)
+
 ---
 
 # Week 3 – Data Storage
@@ -154,6 +158,8 @@ Lab:
 Deliverable:
 Data stored in distributed storage.
 
+**Detailed documentation:** [Task 03 — Data Storage (business specification)](specifications/03-data-storage.md)
+
 ---
 
 # Week 4 – Big Data Processing
@@ -168,6 +174,8 @@ Lab:
 * PySpark basics
 * Data transformations
 * Data cleaning pipeline
+
+**Detailed documentation:** [Task 04 — Big Data Processing (business specification)](specifications/04-big-data-processing.md)
 
 ---
 
