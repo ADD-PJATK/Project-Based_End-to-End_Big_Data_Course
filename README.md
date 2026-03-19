@@ -194,6 +194,8 @@ Lab:
 Deliverable:
 First analytics pipeline.
 
+**Detailed documentation:** [Task 05 — Large Scale Data Processing (business specification)](specifications/05-large-scale-processing.md)
+
 ---
 
 # Week 6 – Feature Engineering
@@ -207,6 +209,8 @@ Lecture:
 Lab:
 
 * Feature engineering using Python / Spark
+
+**Detailed documentation:** [Task 06 — Feature Engineering (business specification)](specifications/06-feature-engineering.md)
 
 ---
 
@@ -229,6 +233,8 @@ Tools:
 * Spark MLlib
 * Scikit-learn
 
+**Detailed documentation:** [Task 07 — Machine Learning on Big Data: Clustering (business specification)](specifications/07-clustering.md)
+
 ---
 
 # Week 8 – Recommendation Systems
@@ -245,6 +251,8 @@ Lab:
 Example:
 Movie recommender.
 
+**Detailed documentation:** [Task 08 — Recommendation Systems (business specification)](specifications/08-recommendation-systems.md)
+
 ---
 
 # Week 9 – Stream Processing
@@ -258,6 +266,8 @@ Lab:
 
 * Kafka data ingestion
 * Real-time pipeline
+
+**Detailed documentation:** [Task 09 — Stream Processing (business specification)](specifications/09-stream-processing.md)
 
 ---
 
@@ -273,6 +283,8 @@ Lab:
 * Spark Streaming / Flink
 
 Students process **live data streams**.
+
+**Detailed documentation:** [Task 10 — Streaming Analytics (business specification)](specifications/10-streaming-analytics.md)
 
 ---
 
@@ -291,6 +303,8 @@ Lab:
   * Spark GraphX
   * NetworkX
 
+**Detailed documentation:** [Task 11 — Graph Mining (business specification)](specifications/11-graph-mining.md)
+
 ---
 
 # Week 12 – Visualization & BI
@@ -308,6 +322,8 @@ Lab:
   * Metabase
   * Python dashboards
 
+**Detailed documentation:** [Task 12 — Visualization & BI (business specification)](specifications/12-visualization-bi.md)
+
 ---
 
 # Week 13 – Final Project Demo
@@ -324,6 +340,8 @@ Deliverables:
 * code repository
 * documentation
 * presentation
+
+**Detailed documentation:** [Task 13 — Final Project Demo (business specification)](specifications/13-final-project-demo.md)
 
 ---
 
