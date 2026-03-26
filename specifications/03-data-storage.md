@@ -135,8 +135,8 @@ The report must be in **consistent language** and **correct technical English**,
 
 | Criterion | 2-person | 3-person | 4-person |
 |-----------|----------|----------|----------|
-| Data stored in qualifying storage; documented (where, how to access); GitHub not used for bulk data | 7 | 4 | 4 |
-| Repository structure (data_examples/, documentation/) and one task report (consistent, correct technical English) | 3 | 2 | 1.5 |
+| Data stored in qualifying storage; documented (where, how to access); GitHub not used for bulk data | 10 | 4 | 4 |
+| Repository structure (data_examples/, documentation/) and one task report (consistent, correct technical English) | — | 2 | 1.5 |
 | Team of 3: used AWS or GCP or Azure; documented in report | — | 2 | — |
 | Team of 4: used AWS or GCP or Azure and IaC for storage; documented in report | — | — | 2 |
 | At least 1 GitHub Project task for Task 03 | — | 2 | 1.5 |
