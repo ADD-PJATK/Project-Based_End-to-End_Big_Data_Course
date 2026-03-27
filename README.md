@@ -345,36 +345,6 @@ Deliverables:
 
 ---
 
-# Evaluation Model (Modern Mode)
-
-### Project (70%)
-
-Evaluation criteria:
-
-* data pipeline architecture
-* algorithm implementation
-* system scalability
-* documentation
-* presentation
-
----
-
-### Mid-Semester Review (15%)
-
-Short presentation:
-
-* progress
-* problems
-* architecture
-
----
-
-### Final Presentation (15%)
-
-System demonstration.
-
----
-
 # Learning Outcomes (Extended)
 
 Students will be able to:
