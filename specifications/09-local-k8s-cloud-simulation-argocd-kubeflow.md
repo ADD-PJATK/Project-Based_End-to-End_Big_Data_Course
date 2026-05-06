@@ -6,6 +6,7 @@ This add-on applies to **Task 09 (Stream Processing)** and supplements the offic
 
 > **Hard requirements for this add-on**
 > - You must use **Argo CD** (GitOps) so the grader can monitor deployments.
+> - You must use **Helm** as IaC/packaging for the Kubernetes deployment (see Section 2.4).
 > - You must use **Kubeflow** (at least one pipeline/experiment relevant to Task 09).
 > - In the **Task 09 report (`documentation/task09_stream_processing.md`)** you must include **screenshots** proving both Argo CD and Kubeflow usage.
 
@@ -34,6 +35,22 @@ Deploy Argo CD to the cluster and manage your project through **Argo CD Applicat
 
 ### 2.3 Kubeflow (required)
 Install Kubeflow (any working local distribution is acceptable) and use it for **one Task-09-related pipeline** (see section 5).
+
+### 2.4 Helm as IaC (required)
+You must package your Kubernetes deployment using **Helm**:
+
+- Provide either:
+  - one umbrella chart (recommended), or
+  - multiple charts (e.g., `kafka/`, `task09-producer/`, `task09-consumer/`) with a documented install order.
+- Commit Helm artifacts to the repository:
+  - `Chart.yaml`
+  - `values.yaml` (and optionally `values.local.yaml`)
+  - templates under `templates/`
+- Argo CD must deploy your workload **from Helm** (Argo CD “Helm source” / Helm chart path in repo).
+
+Evidence expected in the Task 09 report:
+- chart path(s) in the repo and the release name(s)
+- values you override for local (ports, resources, topic name, broker address)
 
 ---
 

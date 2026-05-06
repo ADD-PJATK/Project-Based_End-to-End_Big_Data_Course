@@ -6,6 +6,7 @@ It supplements the official Task 11 specification.
 
 > **Hard requirements for this add-on**
 > - Use **Argo CD** (GitOps) to deploy and monitor your graph-mining pipeline.
+> - Use **Helm** as IaC/packaging for the Kubernetes deployment (see Section 2.1).
 > - Use **Kubeflow** for at least one Task-11-relevant pipeline/experiment.
 > - In the **Task 11 report (`documentation/task11_graph_mining.md`)** include **screenshots** proving both Argo CD and Kubeflow usage.
 
@@ -35,6 +36,13 @@ infra/
 ```
 
 Argo CD must manage the resources (manifests/Helm/Kustomize) used for Task 11.
+
+### 2.1 Helm as IaC (required)
+Your Task 11 deployment must be packaged with **Helm**:
+
+- Provide a chart that deploys the Task 11 Job (and any dependencies).
+- Commit Helm artifacts (`Chart.yaml`, `values.yaml`, templates) to the repository.
+- Argo CD must deploy from your **Helm chart** in Git.
 
 ---
 

@@ -6,6 +6,7 @@ It supplements the official Task 12 specification.
 
 > **Hard requirements for this add-on**
 > - Use **Argo CD** (GitOps) so the grader can monitor the dashboard deployment.
+> - Use **Helm** as IaC/packaging for the Kubernetes deployment (see Section 2.1).
 > - Use **Kubeflow** for at least one pipeline/experiment that produces or refreshes dashboard-ready data.
 > - In the **Task 12 report (`documentation/task12_visualization_bi.md`)** include **screenshots** proving both Argo CD and Kubeflow usage (in addition to dashboard screenshots required by Task 12).
 
@@ -40,6 +41,15 @@ Minimum expectation:
 - Kubernetes manifests/Helm/Kustomize for:
   - dashboard service (Superset/Metabase/Streamlit/Dash)
   - any required dependencies (e.g. a database)
+
+### 2.1 Helm as IaC (required)
+Your BI stack must be packaged with **Helm**:
+
+- Provide a chart (umbrella chart recommended) that deploys:
+  - dashboard service (Superset/Metabase/Streamlit/Dash)
+  - database / dependencies (if needed)
+- Commit Helm artifacts (`Chart.yaml`, `values.yaml`, templates) to the repository.
+- Argo CD must deploy the dashboard using the **Helm chart** in Git.
 
 ---
 

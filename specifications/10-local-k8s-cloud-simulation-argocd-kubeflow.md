@@ -6,6 +6,7 @@ It supplements the official Task 10 specification.
 
 > **Hard requirements for this add-on**
 > - Use **Argo CD** (GitOps) to deploy and monitor your Task 10 streaming job.
+> - Use **Helm** as IaC/packaging for the Kubernetes deployment (see Section 2.1).
 > - Use **Kubeflow** for at least one Task-10-relevant pipeline/experiment.
 > - In the **Task 10 report (`documentation/task10_streaming_analytics.md`)** include **screenshots** proving both Argo CD and Kubeflow usage.
 
@@ -36,6 +37,16 @@ infra/
 Minimum expectation:
 - An Argo CD Application that deploys **Kafka + streaming job + sink** (can be one app or multiple apps).
 - Manifests/Helm/Kustomize that are reproducible from scratch.
+
+### 2.1 Helm as IaC (required)
+Your Kubernetes deployment must be packaged with **Helm**:
+
+- Provide an umbrella chart (recommended) that deploys:
+  - Kafka (or your message bus)
+  - the Task 10 streaming job
+  - output sink / storage component (if needed)
+- Commit Helm artifacts (`Chart.yaml`, `values.yaml`, templates) to the repository.
+- Argo CD must deploy from the **Helm chart** in your repo (not manual `kubectl apply`).
 
 ---
 
