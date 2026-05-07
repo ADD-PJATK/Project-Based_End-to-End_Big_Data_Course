@@ -20,7 +20,7 @@ Open in the browser:
 https://add.piotrkojalowicz.dev/
 ```
 
-1. Enter the **shared class password** (announced by the instructor).
+1. Enter the **shared class password**: `A@d-$01`
 2. Copy the generated **API key** — it is **unique per student**.  
    You will need it in every API call.
 
