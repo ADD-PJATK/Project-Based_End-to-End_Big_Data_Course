@@ -1,0 +1,55 @@
+# Tickers (50)
+
+The system streams fictitious ticks for the following companies:
+
+- ACME — ACME S.A.
+- ALFA — Alfa Technologies
+- BETA — Beta Retail Group
+- CASH — CashBank
+- CLOUD — CloudNine
+- COAL — Coal Energy
+- COPR — Copper Mining
+- DATA — DataWorks
+- DEVS — DevStudio
+- DRON — Dronix
+- ECO — EcoPower
+- EDU — EduNext
+- ENRG — Energo
+- FARM — FarmFoods
+- FINX — FinX
+- FOOD — FoodBox
+- FUEL — FuelOne
+- GAME — GameForge
+- GRIN — Green Invest
+- HEAL — HealTech
+- HOME — HomeBuild
+- HYPE — Hype Media
+- INSR — InsureCo
+- IOT — IoT Systems
+- JET — Jet Logistics
+- LABS — Labs Research
+- LEND — Lendify
+- LOGI — LogiWare
+- MALL — Mall Retail
+- MEDI — MediCare
+- META — MetaCom
+- MOBI — MobiTel
+- MOVE — MoveNow
+- NET — Netlink
+- NOVA — Nova Ventures
+- OILS — OilSands
+- PARK — Park Realty
+- PHAR — Pharmax
+- PLNT — Plantio
+- PROD — Prodigo
+- QBIT — QBit Quantum
+- RAIL — Rail Cargo
+- ROBO — RoboMakers
+- SAFE — SafeSecurity
+- SHIP — ShipIt
+- SHOP — ShopNow
+- SOLR — Solaris
+- TEL — TelcoPlus
+- TRVL — TravelBee
+- WATR — WaterWorks
+

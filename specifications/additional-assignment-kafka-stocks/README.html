@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<style>
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:900px;margin:2rem auto;line-height:1.55;color:#111;padding:0 1.5rem;}
+  h1{border-bottom:2px solid #333;padding-bottom:.4rem;}
+  h2{border-bottom:1px solid #ccc;padding-bottom:.2rem;margin-top:2rem;}
+  code{background:#f4f4f4;padding:.15rem .4rem;border-radius:4px;font-size:.88em;}
+  pre{background:#f4f4f4;padding:.9rem 1rem;border-radius:6px;overflow:auto;}
+  pre code{background:none;padding:0;}
+  table{border-collapse:collapse;width:100%;margin:1rem 0;}
+  th,td{border:1px solid #ccc;padding:.4rem .7rem;text-align:left;}
+  th{background:#f0f0f0;}
+  blockquote{border-left:4px solid #ccc;margin:1rem 0;padding:.3rem 1rem;background:#fafafa;}
+  @media print{body{margin:1rem;} pre{white-space:pre-wrap;}}
+</style>
+</head><body>
+<h1>Additional Assignment: Real-time Stock Data (Kafka / SSE)</h1>
+<blockquote>
+<p><strong>Estimated time:</strong> ~60 minutes<br />
+<strong>Tools allowed:</strong> any AI coding assistant (Cursor AI, VS Code + Copilot, etc.) — vibe coding encouraged!</p>
+</blockquote>
+<hr />
+<h2>1. Context</h2>
+<p>During this lab you will consume a <strong>live stream of fictitious stock price ticks</strong> for 50 companies.<br />
+The data is produced by a Kafka broker running on the instructor's server and exposed via a simple <strong>HTTP / SSE API</strong> — no Kafka client libraries required.</p>
+<hr />
+<h2>2. Step 1 — Get your API key</h2>
+<p>Open in the browser:</p>
+<pre><code>https://add.piotrkojalowicz.dev/
+</code></pre>
+<ol>
+<li>Enter the <strong>shared class password</strong> (announced by the instructor).</li>
+<li>Copy the generated <strong>API key</strong> — it is <strong>unique per student</strong>.<br />
+   You will need it in every API call.</li>
+</ol>
+<blockquote>
+<p>⚠️ The service is open only during class hours (until 19:00).<br />
+Rate limit: first 10 requests free, then max 1 request / 10 s per key.</p>
+</blockquote>
+<hr />
+<h2>3. Available API endpoints</h2>
+<p>Base URL: <code>https://add.piotrkojalowicz.dev</code></p>
+<h3>Authentication</h3>
+<p>Every request must include the key as a header <strong>or</strong> a query param:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Header</td>
+<td><code>X-API-Key: &lt;YOUR_KEY&gt;</code></td>
+</tr>
+<tr>
+<td>Query param</td>
+<td><code>?api_key=&lt;YOUR_KEY&gt;</code> (convenient for browser)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3><code>GET /api/tickers</code></h3>
+<p>Returns the full list of 50 companies.</p>
+<pre><code class="language-bash">curl -H &quot;X-API-Key: &lt;KEY&gt;&quot; &quot;https://add.piotrkojalowicz.dev/api/tickers&quot;
+</code></pre>
+<p>Browser:</p>
+<pre><code>https://add.piotrkojalowicz.dev/api/tickers?api_key=&lt;KEY&gt;
+</code></pre>
+<hr />
+<h3><code>GET /api/latest?ticker=ACME</code></h3>
+<p>Returns the most recent tick for one or more tickers.</p>
+<pre><code class="language-bash">curl -H &quot;X-API-Key: &lt;KEY&gt;&quot; \
+  &quot;https://add.piotrkojalowicz.dev/api/latest?ticker=ACME&amp;ticker=ALFA&quot;
+</code></pre>
+<p>Browser:</p>
+<pre><code>https://add.piotrkojalowicz.dev/api/latest?ticker=ACME&amp;ticker=ALFA&amp;api_key=&lt;KEY&gt;
+</code></pre>
+<p><strong>Response format:</strong></p>
+<pre><code class="language-json">{
+  &quot;data&quot;: [
+    {
+      &quot;ticker&quot;: &quot;ACME&quot;,
+      &quot;ts&quot;: &quot;2026-05-07T15:30:00+02:00&quot;,
+      &quot;price&quot;: 123.45,
+      &quot;currency&quot;: &quot;PLN&quot;,
+      &quot;volume&quot;: 1200,
+      &quot;seq&quot;: 42
+    }
+  ]
+}
+</code></pre>
+<blockquote>
+<p>Data is retained for <strong>~10 minutes</strong> only — older ticks are automatically deleted.</p>
+</blockquote>
+<hr />
+<h3><code>GET /api/stream?ticker=ACME</code></h3>
+<p>Live stream via <strong>Server-Sent Events (SSE)</strong> — new tick sent every ~second.</p>
+<pre><code class="language-bash">curl -N -H &quot;X-API-Key: &lt;KEY&gt;&quot; \
+  &quot;https://add.piotrkojalowicz.dev/api/stream?ticker=ACME&quot;
+</code></pre>
+<p>Browser (live view):</p>
+<pre><code>https://add.piotrkojalowicz.dev/api/stream?ticker=ACME&amp;api_key=&lt;KEY&gt;
+</code></pre>
+<p>Events arrive as:</p>
+<pre><code>event: tick
+data: {&quot;ticker&quot;:&quot;ACME&quot;,&quot;ts&quot;:&quot;...&quot;,&quot;price&quot;:124.10,...}
+</code></pre>
+<hr />
+<h2>4. Task — Build 2 small apps</h2>
+<p>Use any language and framework. AI coding tools are recommended.</p>
+<hr />
+<h3>App #1: Realtime Dashboard</h3>
+<p><strong>Goal:</strong> show live price updates for selected companies.</p>
+<p>Requirements:
+- User can <strong>select one or more tickers</strong> from the list
+- App connects to <code>/api/stream</code> and shows <strong>live updates</strong> in the UI
+- Each update shows at minimum: ticker, price, timestamp
+- Optionally: short price history (last 20–30 ticks) or a mini chart</p>
+<p><strong>Hint:</strong> Use <code>EventSource</code> (JavaScript) or an SSE client library in your language.</p>
+<hr />
+<h3>App #2: History Downloader / Viewer</h3>
+<p><strong>Goal:</strong> fetch recent data, display it, and save it locally.</p>
+<p>Requirements:
+- User can <strong>select tickers</strong> and a <strong>time range</strong> (e.g. last 1–10 minutes)
+- App fetches data from <code>/api/latest</code> (repeatedly, with a delay ≥10 s) or <code>/api/stream</code>
+- Displays results as a <strong>table or chart</strong> in the UI
+- Allows <strong>saving to CSV or JSON</strong></p>
+<blockquote>
+<p>Remember: data older than ~10 minutes is gone. Design your polling accordingly.</p>
+</blockquote>
+<hr />
+<h2>5. Deliverables</h2>
+<p>Submit (e.g. as a GitHub repo or ZIP):</p>
+<ul>
+<li>[ ] Source code for both apps</li>
+<li>[ ] <code>README.md</code> describing:</li>
+<li>how to run locally</li>
+<li>how the API key is configured (env variable, <code>.env</code> file, etc.)</li>
+<li>which endpoints are used and how</li>
+<li>[ ] The API key must <strong>not</strong> be hardcoded in the repository</li>
+</ul>
+<hr />
+<h2>6. Grading</h2>
+<p>See <code>ACCEPTANCE.md</code> for the full checklist.</p>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>App #1 works (live stream, ticker selection, UI)</td>
+<td>40%</td>
+</tr>
+<tr>
+<td>App #2 works (data fetch, time range, save to file)</td>
+<td>40%</td>
+</tr>
+<tr>
+<td>Code quality &amp; README</td>
+<td>20%</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>7. List of tickers</h2>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Company</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACME</td>
+<td>ACME Corp.</td>
+</tr>
+<tr>
+<td>ALFA</td>
+<td>Alfa Technologies</td>
+</tr>
+<tr>
+<td>BETA</td>
+<td>Beta Retail Group</td>
+</tr>
+<tr>
+<td>CASH</td>
+<td>CashBank</td>
+</tr>
+<tr>
+<td>CLOUD</td>
+<td>CloudNine</td>
+</tr>
+<tr>
+<td>COAL</td>
+<td>Coal Energy</td>
+</tr>
+<tr>
+<td>COPR</td>
+<td>Copper Mining Co.</td>
+</tr>
+<tr>
+<td>DATA</td>
+<td>DataWorks</td>
+</tr>
+<tr>
+<td>DEVS</td>
+<td>DevStudio</td>
+</tr>
+<tr>
+<td>DRON</td>
+<td>Dronix</td>
+</tr>
+<tr>
+<td>ECO</td>
+<td>EcoPower</td>
+</tr>
+<tr>
+<td>EDU</td>
+<td>EduNext</td>
+</tr>
+<tr>
+<td>ENRG</td>
+<td>Energo</td>
+</tr>
+<tr>
+<td>FARM</td>
+<td>FarmFoods</td>
+</tr>
+<tr>
+<td>FINX</td>
+<td>FinX</td>
+</tr>
+<tr>
+<td>FOOD</td>
+<td>FoodBox</td>
+</tr>
+<tr>
+<td>FUEL</td>
+<td>FuelOne</td>
+</tr>
+<tr>
+<td>GAME</td>
+<td>GameForge</td>
+</tr>
+<tr>
+<td>GRIN</td>
+<td>Green Invest</td>
+</tr>
+<tr>
+<td>HEAL</td>
+<td>HealTech</td>
+</tr>
+<tr>
+<td>HOME</td>
+<td>HomeBuild</td>
+</tr>
+<tr>
+<td>HYPE</td>
+<td>Hype Media</td>
+</tr>
+<tr>
+<td>INSR</td>
+<td>InsureCo</td>
+</tr>
+<tr>
+<td>IOT</td>
+<td>IoT Systems</td>
+</tr>
+<tr>
+<td>JET</td>
+<td>Jet Logistics</td>
+</tr>
+<tr>
+<td>LABS</td>
+<td>Labs Research</td>
+</tr>
+<tr>
+<td>LEND</td>
+<td>Lendify</td>
+</tr>
+<tr>
+<td>LOGI</td>
+<td>LogiWare</td>
+</tr>
+<tr>
+<td>MALL</td>
+<td>Mall Retail</td>
+</tr>
+<tr>
+<td>MEDI</td>
+<td>MediCare</td>
+</tr>
+<tr>
+<td>META</td>
+<td>MetaCom</td>
+</tr>
+<tr>
+<td>MOBI</td>
+<td>MobiTel</td>
+</tr>
+<tr>
+<td>MOVE</td>
+<td>MoveNow</td>
+</tr>
+<tr>
+<td>NET</td>
+<td>Netlink</td>
+</tr>
+<tr>
+<td>NOVA</td>
+<td>Nova Ventures</td>
+</tr>
+<tr>
+<td>OILS</td>
+<td>OilSands</td>
+</tr>
+<tr>
+<td>PARK</td>
+<td>Park Realty</td>
+</tr>
+<tr>
+<td>PHAR</td>
+<td>Pharmax</td>
+</tr>
+<tr>
+<td>PLNT</td>
+<td>Plantio</td>
+</tr>
+<tr>
+<td>PROD</td>
+<td>Prodigo</td>
+</tr>
+<tr>
+<td>QBIT</td>
+<td>QBit Quantum</td>
+</tr>
+<tr>
+<td>RAIL</td>
+<td>Rail Cargo</td>
+</tr>
+<tr>
+<td>ROBO</td>
+<td>RoboMakers</td>
+</tr>
+<tr>
+<td>SAFE</td>
+<td>SafeSecurity</td>
+</tr>
+<tr>
+<td>SHIP</td>
+<td>ShipIt</td>
+</tr>
+<tr>
+<td>SHOP</td>
+<td>ShopNow</td>
+</tr>
+<tr>
+<td>SOLR</td>
+<td>Solaris</td>
+</tr>
+<tr>
+<td>TEL</td>
+<td>TelcoPlus</td>
+</tr>
+<tr>
+<td>TRVL</td>
+<td>TravelBee</td>
+</tr>
+<tr>
+<td>WATR</td>
+<td>WaterWorks</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>8. Quick-start example (Python)</h2>
+<pre><code class="language-python">import requests, os
+
+API_KEY = os.environ[&quot;ADD_API_KEY&quot;]   # set in .env or shell
+BASE    = &quot;https://add.piotrkojalowicz.dev&quot;
+HEADERS = {&quot;X-API-Key&quot;: API_KEY}
+
+# list tickers
+tickers = requests.get(f&quot;{BASE}/api/tickers&quot;, headers=HEADERS).json()
+print(tickers[&quot;tickers&quot;][:5])
+
+# latest price for ACME
+data = requests.get(f&quot;{BASE}/api/latest&quot;, params={&quot;ticker&quot;: &quot;ACME&quot;}, headers=HEADERS).json()
+print(data)
+</code></pre>
+<p>SSE stream (Python):</p>
+<pre><code class="language-python">import sseclient, requests, os
+
+API_KEY = os.environ[&quot;ADD_API_KEY&quot;]
+resp = requests.get(
+    &quot;https://add.piotrkojalowicz.dev/api/stream&quot;,
+    params={&quot;ticker&quot;: &quot;ACME&quot;},
+    headers={&quot;X-API-Key&quot;: API_KEY},
+    stream=True,
+)
+for event in sseclient.SSEClient(resp):
+    if event.event == &quot;tick&quot;:
+        print(event.data)
+</code></pre>
+<p>JavaScript (browser / Node):</p>
+<pre><code class="language-javascript">const key = &quot;YOUR_KEY&quot;;
+const es  = new EventSource(
+  `https://add.piotrkojalowicz.dev/api/stream?ticker=ACME&amp;api_key=${key}`
+);
+es.addEventListener(&quot;tick&quot;, e =&gt; console.log(JSON.parse(e.data)));
+</code></pre>
+</body></html>
