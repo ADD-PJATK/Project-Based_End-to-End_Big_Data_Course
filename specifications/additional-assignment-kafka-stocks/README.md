@@ -151,26 +151,31 @@ Requirements:
 
 ## 5. Deliverables
 
-Submit (e.g. as a GitHub repo or ZIP):
+Create a **new repository** in the ADD GitHub organisation:
 
-- [ ] Source code for both apps
-- [ ] `README.md` describing:
-  - how to run locally
-  - how the API key is configured (env variable, `.env` file, etc.)
-  - which endpoints are used and how
-- [ ] The API key must **not** be hardcoded in the repository
+- Repository name: `sXXXXX_kafka` (your student ID, e.g. `s12345_kafka`)
+- Repository must be public (or accessible to the instructor)
+
+The repository must contain:
+
+- [ ] Source code for **both apps** (each in its own folder)
+- [ ] `README.md` for each app with: prerequisites, installation steps, how to configure the API key, how to run
+- [ ] `screenshots/` folder (or screenshots embedded in the README) showing working apps with charts/data
+- [ ] `.gitignore` — must exclude `.env`, `__pycache__`, `node_modules`, etc.
+- [ ] API key must **not** be committed anywhere
 
 ---
 
-## 6. Grading
+## 6. Grading (0–4 points)
+
+| # | Criterion | Points |
+|---|-----------|--------|
+| 1 | Git repo created correctly in ADD org, named `sXXXXX_kafka` | 1 pt |
+| 2 | Full README: prerequisites, install, configure, run | 1 pt |
+| 3 | Screenshots of working apps including charts | 1 pt |
+| 4 | Proper Git usage: ≥3 meaningful commits, `.gitignore` | 1 pt |
 
 See `ACCEPTANCE.md` for the full checklist.
-
-| Criterion | Weight |
-|-----------|--------|
-| App #1 works (live stream, ticker selection, UI) | 40% |
-| App #2 works (data fetch, time range, save to file) | 40% |
-| Code quality & README | 20% |
 
 ---
 

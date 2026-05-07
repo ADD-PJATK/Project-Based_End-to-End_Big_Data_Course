@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<style>
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:900px;margin:2rem auto;line-height:1.55;color:#111;padding:0 1.5rem;}
+  h1{border-bottom:2px solid #333;padding-bottom:.4rem;}
+  h2{border-bottom:1px solid #ccc;padding-bottom:.2rem;margin-top:2rem;}
+  h3{margin-top:1.5rem;}
+  code{background:#f4f4f4;padding:.15rem .4rem;border-radius:4px;font-size:.88em;}
+  pre{background:#f4f4f4;padding:.9rem 1rem;border-radius:6px;overflow:auto;}
+  pre code{background:none;padding:0;}
+  table{border-collapse:collapse;width:100%;margin:1rem 0;}
+  th,td{border:1px solid #ccc;padding:.4rem .7rem;text-align:left;}
+  th{background:#f0f0f0;}
+  blockquote{border-left:4px solid #ccc;margin:1rem 0;padding:.3rem 1rem;background:#fafafa;}
+  ul li{margin:.25rem 0;}
+  @media print{body{margin:1rem;} pre{white-space:pre-wrap;}}
+</style>
+</head><body>
+<h1>Acceptance criteria &amp; Grading rubric</h1>
+<h2>Grading — 0 to 4 points</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Criterion</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Git repository</strong> — created in the ADD GitHub organisation, named <code>sXXXXX_kafka</code> (your student ID)</td>
+<td>1 pt</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Full usage instructions</strong> — README explains how to build, configure and run both apps; all required elements listed below are present</td>
+<td>1 pt</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Screenshots of working apps</strong> — at least one screenshot per app showing live data, including charts/tables</td>
+<td>1 pt</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Proper use of Git</strong> — meaningful commit messages, at least 3–5 commits showing development progress (not one big "final" commit)</td>
+<td>1 pt</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total: 4 points</strong></p>
+<hr />
+<h2>1. Git repository (1 pt)</h2>
+<ul>
+<li>[ ] Repository created under the <strong>ADD GitHub organisation</strong></li>
+<li>[ ] Repository name: <code>sXXXXX_kafka</code> (replace <code>XXXXX</code> with your student ID, e.g. <code>s12345_kafka</code>)</li>
+<li>[ ] Repository is <strong>public</strong> or accessible to the instructor</li>
+<li>[ ] API key is <strong>not committed</strong> — use an <code>.env</code> file and add it to <code>.gitignore</code></li>
+</ul>
+<hr />
+<h2>2. Required README elements (1 pt)</h2>
+<p>Each app must have a <code>README.md</code> that includes all of the following:</p>
+<ul>
+<li>[ ] <strong>Prerequisites</strong> — what needs to be installed (Python, Node, etc.) and versions</li>
+<li>[ ] <strong>Installation</strong> — step-by-step: clone, install dependencies (<code>pip install -r requirements.txt</code> / <code>npm install</code> / etc.)</li>
+<li>[ ] <strong>Configuration</strong> — how to set the API key (e.g. <code>export ADD_API_KEY=...</code> or <code>.env</code> file)</li>
+<li>[ ] <strong>How to run</strong> — exact command to start the app (e.g. <code>python app.py</code> / <code>npm run dev</code>)</li>
+<li>[ ] <strong>Which endpoints are used</strong> and how</li>
+</ul>
+<blockquote>
+<p>A good README means someone who has never seen your code can run it in under 5 minutes.</p>
+</blockquote>
+<hr />
+<h2>3. Screenshots (1 pt)</h2>
+<p>Must be included in the repository (e.g. <code>screenshots/</code> folder or embedded in the README):</p>
+<ul>
+<li>[ ] <strong>App #1</strong> — screenshot showing live price updates for at least 2 tickers, with a chart or history table</li>
+<li>[ ] <strong>App #2</strong> — screenshot showing fetched data for a selected time range, with a chart or table and a downloaded file (CSV/JSON)</li>
+<li>[ ] Screenshots show <strong>real data</strong> (not empty state or mock data)</li>
+</ul>
+<hr />
+<h2>4. Git usage (1 pt)</h2>
+<ul>
+<li>[ ] At least <strong>3 commits</strong> with meaningful messages (e.g. <code>"Add SSE client for live stream"</code>, <code>"Add ticker selection UI"</code>)</li>
+<li>[ ] <strong>No "init" or "final" mega-commits</strong> containing the entire codebase</li>
+<li>[ ] <code>.gitignore</code> present and correct (excludes <code>.env</code>, <code>__pycache__</code>, <code>node_modules</code>, etc.)</li>
+<li>[ ] Each app is in its own directory or clearly separated</li>
+</ul>
+<hr />
+<h2>Functional requirements checklist</h2>
+<h3>App #1 — Realtime Dashboard</h3>
+<ul>
+<li>[ ] User can select one or more tickers (from the 50-company list)</li>
+<li>[ ] App connects to <code>GET /api/stream</code> (SSE) and shows <strong>live updates</strong></li>
+<li>[ ] UI displays: ticker symbol, current price, timestamp</li>
+<li>[ ] Chart or scrolling history of last N ticks</li>
+<li>[ ] App handles connection drops gracefully (reconnects or shows an error)</li>
+</ul>
+<h3>App #2 — History Downloader / Viewer</h3>
+<ul>
+<li>[ ] User can select tickers</li>
+<li>[ ] User can specify a time range (last N minutes, up to ~10 min)</li>
+<li>[ ] App fetches data via <code>GET /api/latest</code> (polling with ≥10 s interval) or <code>/api/stream</code></li>
+<li>[ ] Results are displayed in the UI (table or chart)</li>
+<li>[ ] Results can be saved as CSV or JSON file</li>
+</ul>
+<h3>Common (both apps)</h3>
+<ul>
+<li>[ ] API key passed via <code>X-API-Key</code> header or <code>api_key</code> query param</li>
+<li>[ ] API key <strong>not hardcoded</strong> — stored in env variable or <code>.env</code> file</li>
+<li>[ ] App runs locally without errors on a clean install</li>
+</ul>
+</body></html>

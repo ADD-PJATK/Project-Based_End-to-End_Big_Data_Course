@@ -5,6 +5,7 @@
   body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:900px;margin:2rem auto;line-height:1.55;color:#111;padding:0 1.5rem;}
   h1{border-bottom:2px solid #333;padding-bottom:.4rem;}
   h2{border-bottom:1px solid #ccc;padding-bottom:.2rem;margin-top:2rem;}
+  h3{margin-top:1.5rem;}
   code{background:#f4f4f4;padding:.15rem .4rem;border-radius:4px;font-size:.88em;}
   pre{background:#f4f4f4;padding:.9rem 1rem;border-radius:6px;overflow:auto;}
   pre code{background:none;padding:0;}
@@ -12,6 +13,7 @@
   th,td{border:1px solid #ccc;padding:.4rem .7rem;text-align:left;}
   th{background:#f0f0f0;}
   blockquote{border-left:4px solid #ccc;margin:1rem 0;padding:.3rem 1rem;background:#fafafa;}
+  ul li{margin:.25rem 0;}
   @media print{body{margin:1rem;} pre{white-space:pre-wrap;}}
 </style>
 </head><body>
@@ -133,40 +135,53 @@ data: {&quot;ticker&quot;:&quot;ACME&quot;,&quot;ts&quot;:&quot;...&quot;,&quot;
 </blockquote>
 <hr />
 <h2>5. Deliverables</h2>
-<p>Submit (e.g. as a GitHub repo or ZIP):</p>
+<p>Create a <strong>new repository</strong> in the ADD GitHub organisation:</p>
 <ul>
-<li>[ ] Source code for both apps</li>
-<li>[ ] <code>README.md</code> describing:</li>
-<li>how to run locally</li>
-<li>how the API key is configured (env variable, <code>.env</code> file, etc.)</li>
-<li>which endpoints are used and how</li>
-<li>[ ] The API key must <strong>not</strong> be hardcoded in the repository</li>
+<li>Repository name: <code>sXXXXX_kafka</code> (your student ID, e.g. <code>s12345_kafka</code>)</li>
+<li>Repository must be public (or accessible to the instructor)</li>
+</ul>
+<p>The repository must contain:</p>
+<ul>
+<li>[ ] Source code for <strong>both apps</strong> (each in its own folder)</li>
+<li>[ ] <code>README.md</code> for each app with: prerequisites, installation steps, how to configure the API key, how to run</li>
+<li>[ ] <code>screenshots/</code> folder (or screenshots embedded in the README) showing working apps with charts/data</li>
+<li>[ ] <code>.gitignore</code> — must exclude <code>.env</code>, <code>__pycache__</code>, <code>node_modules</code>, etc.</li>
+<li>[ ] API key must <strong>not</strong> be committed anywhere</li>
 </ul>
 <hr />
-<h2>6. Grading</h2>
-<p>See <code>ACCEPTANCE.md</code> for the full checklist.</p>
+<h2>6. Grading (0–4 points)</h2>
 <table>
 <thead>
 <tr>
+<th>#</th>
 <th>Criterion</th>
-<th>Weight</th>
+<th>Points</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>App #1 works (live stream, ticker selection, UI)</td>
-<td>40%</td>
+<td>1</td>
+<td>Git repo created correctly in ADD org, named <code>sXXXXX_kafka</code></td>
+<td>1 pt</td>
 </tr>
 <tr>
-<td>App #2 works (data fetch, time range, save to file)</td>
-<td>40%</td>
+<td>2</td>
+<td>Full README: prerequisites, install, configure, run</td>
+<td>1 pt</td>
 </tr>
 <tr>
-<td>Code quality &amp; README</td>
-<td>20%</td>
+<td>3</td>
+<td>Screenshots of working apps including charts</td>
+<td>1 pt</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Proper Git usage: ≥3 meaningful commits, <code>.gitignore</code></td>
+<td>1 pt</td>
 </tr>
 </tbody>
 </table>
+<p>See <code>ACCEPTANCE.md</code> for the full checklist.</p>
 <hr />
 <h2>7. List of tickers</h2>
 <table>
