@@ -114,12 +114,11 @@ Static rules + local string processing only. Using AI **to help you write code**
 
 ## 7. Deliverables
 
-Create a **new repository** in the ADD GitHub organisation:
+Create a **branch** in last week repo:
 
-- Repository name: `sXXXXX_anonymize` (your student ID, e.g. `s12345_anonymize`)
-- Repository must be public (or accessible to the instructor)
+- branch: `anonymize`
 
-The repository must contain:
+The branch must contain:
 
 - [ ] Source code for the **CLI anonymizer**
 - [ ] Root `README.md` with: prerequisites, installation, **exact** command-line examples, explanation of mapping format and overlap policy
@@ -136,7 +135,7 @@ The repository must contain:
 
 | # | Criterion | Points |
 |---|-----------|--------|
-| 1 | Use repo form last week, named `sXXXXX_anonymize`, create new branch | 1 pt |
+| 1 | Use repo form last week, named `sXXXXX_anonymize or anonymizer`, create new branch | 1 pt |
 | 2 | README: prerequisites, install, run, mapping format, edge-case policy | 1 pt |
 | 3 | Screenshots / artefacts proving a run on at least **two** different extensions among `.json`, `.txt`, `.md`, `.csv` | 1 pt |
 | 4 | Git hygiene: ≥3 meaningful commits, sensible `.gitignore`, working `examples/` | 1 pt |
