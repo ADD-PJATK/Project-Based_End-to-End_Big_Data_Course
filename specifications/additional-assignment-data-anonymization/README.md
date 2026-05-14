@@ -136,7 +136,7 @@ The repository must contain:
 
 | # | Criterion | Points |
 |---|-----------|--------|
-| 1 | Git repo in ADD org, named `sXXXXX_anonymize` | 1 pt |
+| 1 | Use repo form last week, named `sXXXXX_anonymize`, create new branch | 1 pt |
 | 2 | README: prerequisites, install, run, mapping format, edge-case policy | 1 pt |
 | 3 | Screenshots / artefacts proving a run on at least **two** different extensions among `.json`, `.txt`, `.md`, `.csv` | 1 pt |
 | 4 | Git hygiene: ≥3 meaningful commits, sensible `.gitignore`, working `examples/` | 1 pt |
