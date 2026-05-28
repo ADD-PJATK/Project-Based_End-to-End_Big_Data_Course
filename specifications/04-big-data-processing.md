@@ -82,6 +82,16 @@ Teams are expected to use a **Spark-based** (or equivalent distributed) approach
 
 - **data_examples/** and **documentation/** must be maintained. For Task 04, **one** task report (e.g. `documentation/task04_big_data_processing.md`) **per group**; teams of 3 and 4 contribute to the same report and maintain one consistent quality standard (**correct technical English**).
 
+#### 4.1.1 Clarity of `data_examples/` (cross-task; required in the Task 04 report)
+
+Many repositories keep **small sample files** under `data_examples/` across several tasks. Reviewers and future readers must not confuse **older illustrative fixtures** with **new outputs of the Task 04 pipeline**. Therefore the Task 04 report **must** include a **short dedicated subsection** (e.g. “Data examples and outputs”) that states clearly:
+
+1. **Earlier-task samples (if present):** which files in `data_examples/` (or elsewhere) were introduced for **Task 02 / Task 03** or other earlier steps only (e.g. schema-only fixtures, acquisition samples). State what each is for and that it is **not** necessarily the output of the Task 04 processing pipeline.
+2. **Task 04 outputs in the repository:** which files in `data_examples/` (and/or `reports/`, if used) are **direct deliverables of Task 04** (e.g. cleaned/joined/aggregated samples, correlation tables, EDA exports). For each, give **format, meaning, and how it was produced** (which script/notebook step).
+3. **Full outputs not on GitHub:** where the **full** processed datasets live (e.g. HDFS, S3, GCS, local `data/processed/` per project policy) and that bulk data is **not** redistributed via GitHub.
+
+If the team uses only samples from earlier tasks and no new Task 04 sample file, the report must **state that explicitly** and still point to where the **documented Task 04 output** can be reproduced (path, storage, or report artifact).
+
 ### 4.2 Basic EDA
 
 - A **basic EDA** that satisfies all three conditions in Section 3.5: (1) correlation matrix or equivalent, (2) summary statistics and/or distributions, (3) missing values and duplicates overview. The EDA must be reproducible (script or notebook) and its outcomes documented in the task report.
@@ -99,6 +109,7 @@ Teams are expected to use a **Spark-based** (or equivalent distributed) approach
 
 - A **task report** in **Markdown** in the documentation folder (e.g. `documentation/task04_big_data_processing.md`) that includes:
   - **What** the pipeline does (high-level); for teams of 3: description of the four stages (ingestion → storage → quality validation → processing).
+  - **Data examples vs pipeline outputs:** the subsection required by **Section 4.1.1** (earlier-task samples vs Task 04 deliverables; full outputs off GitHub).
   - **EDA:** summary of the three EDA conditions (correlation analysis, summary statistics/distributions, missing values and duplicates overview) and where the results are stored or displayed.
   - **Input:** source of data (e.g. storage from Task 03, path, or sample) and any subset/sampling used.
   - **Transformations:** which operations were applied and why they are relevant to the project.

@@ -86,7 +86,8 @@ The script must produce a **report** with the results. All descriptions and repo
 
 ### 4.1 Repository structure
 
-- **data_examples/** (or equivalent): folder with **a few sample records** representative of the main dataset(s), as in Section 2.1. Must be present from this task onwards.
+- **data_examples/** (or equivalent): folder with **a few sample records** representative of the main dataset(s), as in Section 2.1. Must be present from this task onwards.  
+  - **Note for later tasks:** samples created or placed here for **Task 02** illustrate **raw or early-stage** data layout. In **Task 04**, the project report must **clearly separate** these files from any **new** samples produced by the processing pipeline (see Task 04 specification, Section **4.1.1**).
 - **documentation/** (or equivalent, e.g. `docs/`): folder where **task reports** are stored. Each report must be a **single `.md` file per task** (e.g. `documentation/task02_data_acquisition.md` for this task). There is **one report per group per task**—not one per person. Students must achieve this through **appropriate commits** (e.g. one report file per task, updated by the whole team).
 - **Teams of 3 or 4:** all members **must** contribute to the **same report file** for this task (e.g. by committing to one `documentation/task02_*.md`). The team **must** maintain **one consistent quality standard**: same tone, structure, and **correct technical English** across the whole document. The report is a single, coherent technical document for the group.
 

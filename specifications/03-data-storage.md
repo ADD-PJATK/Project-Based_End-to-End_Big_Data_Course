@@ -91,7 +91,8 @@ Beyond the course stack, the **three most popular public clouds** offer managed 
 
 ### 5.1 Repository structure
 
-- **data_examples/** and **documentation/** must be maintained as in previous tasks. For Task 03, **one** task report (e.g. `documentation/task03_data_storage.md`) **per group**; teams of 3 and 4 contribute to the same report file and maintain one consistent quality standard (**correct technical English**).
+- **data_examples/** and **documentation/** must be maintained as in previous tasks. For Task 03, **one** task report (e.g. `documentation/task03_data_storage.md`) **per group**; teams of 3 and 4 contribute to the same report file and maintain one consistent quality standard (**correct technical English**).  
+  - **Note:** any small samples kept here for storage/access illustration are **not** by themselves the processed outputs of **Task 04**; in Task 04 the team must document the difference explicitly (**Task 04 — Section 4.1.1**).
 
 ### 5.2 Data stored in the chosen storage
 
@@ -135,8 +136,8 @@ The report must be in **consistent language** and **correct technical English**,
 
 | Criterion | 2-person | 3-person | 4-person |
 |-----------|----------|----------|----------|
-| Data stored in qualifying storage; documented (where, how to access); GitHub not used for bulk data | 10 | 4 | 4 |
-| Repository structure (data_examples/, documentation/) and one task report (consistent, correct technical English) | — | 2 | 1.5 |
+| Data stored in qualifying storage; documented (where, how to access); GitHub not used for bulk data | 7 | 4 | 4 |
+| Repository structure (data_examples/, documentation/) and one task report (consistent, correct technical English) | 3 | 2 | 1.5 |
 | Team of 3: used AWS or GCP or Azure; documented in report | — | 2 | — |
 | Team of 4: used AWS or GCP or Azure and IaC for storage; documented in report | — | — | 2 |
 | At least 1 GitHub Project task for Task 03 | — | 2 | 1.5 |

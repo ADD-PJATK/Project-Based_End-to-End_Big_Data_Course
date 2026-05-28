@@ -177,6 +177,8 @@ Lab:
 
 **Detailed documentation:** [Task 04 — Big Data Processing (business specification)](specifications/04-big-data-processing.md)
 
+**Repository clarity:** the Task 04 report must include a short subsection that separates **earlier-task samples** in `data_examples/` from **Task 04 pipeline outputs** and states where **full** outputs live (see specification **§4.1.1**).
+
 ---
 
 # Week 5 – Large Scale Data Processing
